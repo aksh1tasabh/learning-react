@@ -1,6 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-
 const rawData = {
   "statusCode": 0,
   "data": {
@@ -5674,73 +5671,4 @@ const rawData = {
   "csrfToken": "TsrSou8T0iHB-RZkPxasu4N1N3OYWbnPt4YhXnT0"
 };
 
-const Header = () => {
-    return (
-        <div>
-            <h1>This is a header !</h1>
-        </div>
-    );
-};
-
-const RestaurantCard = ({resData}) => {
-  const {card: {id}, card} = resData;
-  // {console.log({card})}
-
-  return <div>
-      <h1>{card.card.id}</h1>
-      {
-        card.card.imageGridCards?.info?.map(m => (
-          <GridCards key={m.id} resData={m} />
-        ))
-      }
-    </div>
-};
-
-const GridCards = ({resData}) => {
-  {console.log(resData)}
-  return (
-    <div>
-      <p>{resData.action.text}</p>
-    </div>
-  );
-};
-
-const Body = (props) => {
-
-    const {statusMessage, cards} = props.data;
-    let resID = 1;
-
-    return (
-        <div>
-            <p>{statusMessage}</p>
-
-            {
-              cards.map(n => (
-                <RestaurantCard key={resID+=1} resData={n} />
-              ))
-            }
-            
-        </div>
-    );
-};
-
-const Footer = () => {
-    return (
-        <div>
-            <p>Footer</p>
-        </div>
-    );
-};
-
-const AppLayout = () => {
-    return (
-        <div>
-        <Header />
-        <Body data={rawData.data} />
-        <Footer />
-        </div>
-    );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+export default rawData;
